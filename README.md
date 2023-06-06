@@ -5,28 +5,26 @@
 
 
 
-## About us
+## Sobre nosotros
+Somos Carlos y Julián, dos estudiantes del Bootcamp de Desarrollo Full Stack de Ironhack Barcelona, y este es nuestro primer proyecto en el que hemos combinado CSS, HTML y JavaScript para desarrollarlo.
 
 
 ## Deployment
-Puedes jugar al juego aquí
+Puedes jugar al juego aquí.
 
-## Estructura de trabajo
-Desarrollamos este proyecto usando Trello para organizar nuestro flujo de trabajo.
 
 ## Sobre el juego
 Con el cursor deberas llegar a la meta sin salir del camino.
 
 
 ## Controles
-
-cursor
+Cursor.
 
 ## Condición de victoria
-Llegar hasta la meta
+Llegar hasta la meta.
 
 ## Condición de derrota
-Colisión entre cursor y borde
+Colisión entre cursor y borde.
 
 ## Clases
 

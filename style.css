@@ -1,6 +1,44 @@
-#game-board {
+/* #game-board {
     margin: auto;
 }
 #gameCanvas {
     border: 2px solid black;
+  } */
+
+  body {
+    padding: 0;
+    text-align: center;
   }
+  
+  .game-intro {
+    float: left;
+    padding: 0% 10%;
+  }
+  
+  .game-intro p {
+    font-size: 18px;
+    font-family: "Verdana"
+  }
+  
+  /* .logo-img {
+    width: 350px;
+  } */
+  
+ 
+  
+  body button {
+    font-size: 30px;
+    background-color: aqua;
+    color: black;
+    padding: 20px 40px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  #game-board {
+      float: left;
+      padding: 20px 0px;
+  }
+  

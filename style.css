@@ -1,3 +1,6 @@
 #game-board {
     margin: auto;
 }
+#gameCanvas {
+    border: 5px solid aqua;
+  }

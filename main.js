@@ -65,36 +65,22 @@ obstaculo: [
 // Dibujar los cuadrados en el canvas
 
 
-/*map1.obstaculo.forEach(function(cuadrado) {
+map1.obstaculo.forEach(function(cuadrado) {
   ctx.fillStyle = cuadrado.color;
   ctx.fillRect(cuadrado.x, cuadrado.y, cuadrado.width, cuadrado.height);
 });
 
 ctx.fillStyle = map1.meta.color;
 ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
-*/
-
-
-
-
-  
-
-   
-
-
-
-      
-
-
 
   class Player {
 
     constructor() {
 
-      this.width = 30;
-      this.height = 30;
+      this.width = 20;
+      this.height = 20;
       this.x = 335;
-      this.y = 285;
+      this.y = 470;
       this.isDragging = false;
     }
     
@@ -104,11 +90,11 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
       contexto.fillRect(this.x, this.y, this.width, this.height);
     }
   
-    clear(contexto) {
-      contexto.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    clear(contexto, canvas) {
+      contexto.clearRect(0, 0, canvas.width, canvas.height);
     }
   
-    handleMouseMove(event, canvas) {
+    handleMouseMove(event, canvas, context) {
 
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
@@ -130,16 +116,16 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
         this.y = mouseY - this.height / 2;
       }
   
-      this.clear();
-      this.draw();
+      this.clear(context, canvas);
+      this.draw(context);
     }
   
-    handleMouseOut() {
+    handleMouseOut(contexto) {
       this.isDragging = false;
       this.x = 335;
       this.y = 285;
-      this.clear();
-      this.draw();
+      this.clear(contexto);
+      this.draw(contexto);
     }
   }
   
@@ -149,19 +135,31 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
       this.context = this.canvas.getContext("2d");
       this.canvas.style.border = "2px solid black";
       this.player = new Player();
+      this.intervalId = undefined
       this.player.draw(this.context)
 }
-   start 
-  
-  // Crear una instancia del juego
+start() {
+  if (this.intervalId == undefined) {
+    this.intervalId = setInterval(() => {
+      this.iteration++;
+      this.clear();
+      this.recalculate();
+      this.print();
+    }, 20);
+  }
+}
+}
   const game = new Game("gameCanvas");
-
+  // Crear una instancia del juego
+  
   game.canvas.addEventListener("mousemove", (event) => {
-    game.player.handleMouseMove(event);
+    game.player.handleMouseMove(event, game.canvas, game.context);
+    console.log ("adios")
   });
 
   game.canvas.addEventListener("mouseout", () => {
-    game.player.handleMouseOut();
+    game.player.handleMouseOut(game.context);
+    console.log ("hola")
   }); 
   }
   

@@ -166,4 +166,3 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
   
   // Crear una instancia del juego
   const game = new Game("gameCanvas");
-}

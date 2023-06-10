@@ -1,46 +1,32 @@
 window.onload = () => {
 
-class Game {
-    constructor(canvasId) {
-      // Obtener el canvas y el contexto
-      this.canvas = document.getElementById(canvasId);
-      this.context = this.canvas.getContext("2d");
-      this.canvas.width = 700;
-      this.canvas.height = 600;
-      this.canvas.style.border = "2px solid black";
-  
-      // Tamaño y posición del rectángulo
-      this.rectangleWidth = 30;
-      this.rectangleHeight = 30;
-      this.startingX = 335;
-      this.startingY = 285;
-      this.rectangleX = this.startingX;
-      this.rectangleY = this.startingY;
-  
-      // Variable para indicar si el rectángulo se debe unir al cursor
+  class Player {
+    constructor(game) {
+      this.game = game;
+      this.canvas = this.game.canvas;
+      this.context = this.game.context;
+      this.width = 30;
+      this.height = 30;
+      this.x = 335;
+      this.y = 285;
       this.isDragging = false;
   
-      // Registrar los eventos mousemove y mouseout en el canvas
       this.canvas.addEventListener("mousemove", (event) => {
         this.handleMouseMove(event);
       });
+  
       this.canvas.addEventListener("mouseout", () => {
         this.handleMouseOut();
       });
-  
-      // Dibujar el rectángulo inicial
-      this.drawRectangle();
     }
   
-    drawRectangle() {
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    draw() {
       this.context.fillStyle = "red";
-      this.context.fillRect(
-        this.rectangleX,
-        this.rectangleY,
-        this.rectangleWidth,
-        this.rectangleHeight
-      );
+      this.context.fillRect(this.x, this.y, this.width, this.height);
+    }
+  
+    clear() {
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
   
     handleMouseMove(event) {
@@ -49,10 +35,10 @@ class Game {
       const mouseY = event.clientY - rect.top;
   
       if (
-        mouseX >= this.rectangleX &&
-        mouseX <= this.rectangleX + this.rectangleWidth &&
-        mouseY >= this.rectangleY &&
-        mouseY <= this.rectangleY + this.rectangleHeight
+        mouseX >= this.x &&
+        mouseX <= this.x + this.width &&
+        mouseY >= this.y &&
+        mouseY <= this.y + this.height
       ) {
         this.isDragging = true;
       } else {
@@ -60,18 +46,34 @@ class Game {
       }
   
       if (this.isDragging) {
-        this.rectangleX = mouseX - this.rectangleWidth / 2;
-        this.rectangleY = mouseY - this.rectangleHeight / 2;
+        this.x = mouseX - this.width / 2;
+        this.y = mouseY - this.height / 2;
       }
   
-      this.drawRectangle();
+      this.clear();
+      this.draw();
     }
   
     handleMouseOut() {
       this.isDragging = false;
-      this.rectangleX = this.startingX;
-      this.rectangleY = this.startingY;
-      this.drawRectangle();
+      this.x = 335;
+      this.y = 285;
+      this.clear();
+      this.draw();
+    }
+  }
+  
+  class Game {
+    constructor(canvasId) {
+      this.canvas = document.getElementById(canvasId);
+      this.context = this.canvas.getContext("2d");
+      this.canvas.style.border = "2px solid black";
+      this.player = new Player(this);
+      this.player.draw();
+  
+      this.canvas.addEventListener("mouseout", () => {
+        this.player.handleMouseOut();
+      });
     }
   }
   

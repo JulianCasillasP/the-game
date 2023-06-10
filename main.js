@@ -65,16 +65,16 @@ obstaculo: [
 // Dibujar los cuadrados en el canvas
 
 
-map1.obstaculo.forEach(function(cuadrado) {
+/*map1.obstaculo.forEach(function(cuadrado) {
   ctx.fillStyle = cuadrado.color;
   ctx.fillRect(cuadrado.x, cuadrado.y, cuadrado.width, cuadrado.height);
 });
 
 ctx.fillStyle = map1.meta.color;
 ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
+*/
 
 
-}
 
 
   
@@ -88,36 +88,29 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
 
 
   class Player {
-    constructor(game) {
-      this.game = game;
-      this.canvas = this.game.canvas;
-      this.context = this.game.context;
+
+    constructor() {
+
       this.width = 30;
       this.height = 30;
       this.x = 335;
       this.y = 285;
       this.isDragging = false;
+    }
+    
   
-      this.canvas.addEventListener("mousemove", (event) => {
-        this.handleMouseMove(event);
-      });
-  
-      this.canvas.addEventListener("mouseout", () => {
-        this.handleMouseOut();
-      });
+    draw(contexto) {
+      contexto.fillStyle = "red";
+      contexto.fillRect(this.x, this.y, this.width, this.height);
     }
   
-    draw() {
-      this.context.fillStyle = "red";
-      this.context.fillRect(this.x, this.y, this.width, this.height);
+    clear(contexto) {
+      contexto.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
   
-    clear() {
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
-  
-    handleMouseMove(event) {
-      const rect = this.canvas.getBoundingClientRect();
+    handleMouseMove(event, canvas) {
+
+      const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
   
@@ -155,14 +148,20 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
       this.canvas = document.getElementById(canvasId);
       this.context = this.canvas.getContext("2d");
       this.canvas.style.border = "2px solid black";
-      this.player = new Player(this);
-      this.player.draw();
-  
-      this.canvas.addEventListener("mouseout", () => {
-        this.player.handleMouseOut();
-      });
-    }
-  }
+      this.player = new Player();
+      this.player.draw(this.context)
+}
+   start 
   
   // Crear una instancia del juego
   const game = new Game("gameCanvas");
+
+  game.canvas.addEventListener("mousemove", (event) => {
+    game.player.handleMouseMove(event);
+  });
+
+  game.canvas.addEventListener("mouseout", () => {
+    game.player.handleMouseOut();
+  }); 
+  }
+  

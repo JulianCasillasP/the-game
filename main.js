@@ -159,12 +159,84 @@ start() {
 print() {
 }
 }
+
+  //logica de movimiento del jugador
+  recalculate() {
+  // Obtener las coordenadas del jugador
+  const playerX = this.player.x;
+  const playerY = this.player.y;
+  const playerWidth = this.player.width;
+  const playerHeight = this.player.height;
+
+  // Verificar colisiones con obstáculos
+  this.map.obstaculo.forEach((obstaculo) => {
+    if (
+      playerX < obstaculo.x + obstaculo.width &&
+      playerX + playerWidth > obstaculo.x &&
+      playerY < obstaculo.y + obstaculo.height &&
+      playerY + playerHeight > obstaculo.y
+    ) {
+      // Si hay colisión, restablecer la posición del jugador
+      this.player.x = 335;
+      this.player.y = 470;
+    }
+  });
+
+  // Verificar si se alcanzó la meta
+  const meta = this.map.meta;
+  if (
+    playerX < meta.x + meta.width &&
+    playerX + playerWidth > meta.x &&
+    playerY < meta.y + meta.height &&
+    playerY + playerHeight > meta.y
+  ) {
+    // ¡Se alcanzó la meta!
+    console.log("¡Has ganado!");
+    // Aquí puedes agregar tu lógica para manejar la victoria del jugador
+  }
+
+}
+
+print() {
+  // Dibujar el mapa y el jugador en el canvas
+  this.map.obstaculo.forEach((cuadrado) => {
+    this.context.fillStyle = cuadrado.color;
+    this.context.fillRect(
+      cuadrado.x,
+      cuadrado.y,
+      cuadrado.width,
+      cuadrado.height
+    );
+  });
+
+  this.context.fillStyle = this.map.meta.color;
+  this.context.fillRect(
+    this.map.meta.x,
+    this.map.meta.y,
+    this.map.meta.width,
+    this.map.meta.height
+  );
+
+  this.player.draw(this.context);
+}
+}
+
+
+
+
+
+// Crear una instancia del juego
   const game = new Game("gameCanvas");
-  // Crear una instancia del juego
   
+  document.getElementById("start-button").addEventListener("click", () => {
+    game.map = map1
+    game.start();
+  });
+  
+  document.getElementsByClassName("game-intro")[0].style.display = "none";
+
   game.canvas.addEventListener("mousemove", (event) => {
     game.player.handleMouseMove(event, game.canvas, game.context);
-    console.log ("adios")
   });
 
   game.canvas.addEventListener("mouseout", () => {

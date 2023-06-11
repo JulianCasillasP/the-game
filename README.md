@@ -10,7 +10,7 @@ Somos Carlos y Julián, dos estudiantes del Bootcamp de Desarrollo Full Stack de
 
 
 ## Deployment
-Puedes jugar al juego [aquí].(https://juliancasillasp.github.io/the-game/)
+Puedes jugar al juego [aquí](https://juliancasillasp.github.io/the-game/)
 
 
 ## Sobre el juego

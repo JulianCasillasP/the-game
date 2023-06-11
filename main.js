@@ -65,18 +65,11 @@ obstaculo: [
 // Dibujar los cuadrados en el canvas
 
 
-map1.obstaculo.forEach(function(cuadrado) {
-  ctx.fillStyle = cuadrado.color;
-  ctx.fillRect(cuadrado.x, cuadrado.y, cuadrado.width, cuadrado.height);
-});
-
-ctx.fillStyle = map1.meta.color;
-ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
 
   class Player {
 
     constructor() {
-
+      this.radius = 10
       this.width = 20;
       this.height = 20;
       this.x = 335;
@@ -87,11 +80,24 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
   
     draw(contexto) {
       contexto.fillStyle = "red";
-      contexto.fillRect(this.x, this.y, this.width, this.height);
+      contexto.beginPath();
+      contexto.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      contexto.closePath();
+      contexto.fill();
+
+      map1.obstaculo.forEach(function(cuadrado) {
+        ctx.fillStyle = cuadrado.color;
+        ctx.fillRect(cuadrado.x, cuadrado.y, cuadrado.width, cuadrado.height);
+      });
+      
+      ctx.fillStyle = map1.meta.color;
+      ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
+      
     }
   
     clear(contexto, canvas) {
       contexto.clearRect(0, 0, canvas.width, canvas.height);
+      
     }
   
     handleMouseMove(event, canvas, context) {
@@ -123,7 +129,7 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
     handleMouseOut(contexto) {
       this.isDragging = false;
       this.x = 335;
-      this.y = 285;
+      this.y = 470;
       this.clear(contexto);
       this.draw(contexto);
     }
@@ -135,8 +141,10 @@ ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
       this.context = this.canvas.getContext("2d");
       this.canvas.style.border = "2px solid black";
       this.player = new Player();
-      this.intervalId = undefined
-      this.player.draw(this.context)
+      this.intervalId = undefined;
+      this.player.draw(this.context);
+      this.map = map1;
+      
 }
 start() {
   if (this.intervalId == undefined) {
@@ -147,6 +155,8 @@ start() {
       this.print();
     }, 20);
   }
+}
+print() {
 }
 }
   const game = new Game("gameCanvas");
@@ -162,4 +172,3 @@ start() {
     console.log ("hola")
   }); 
   }
-  

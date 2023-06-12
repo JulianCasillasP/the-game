@@ -1,10 +1,3 @@
-/* #game-board {
-    margin: auto;
-}
-#gameCanvas {
-    border: 2px solid black;
-  } */
-
   body {
     padding: 0;
     text-align: center;
@@ -13,24 +6,28 @@
   .game-intro {
     float: left;
     padding: 0% 10%;
+    background-color: brown;
+    border: 5px solid black;
+      
   }
   
   .game-intro p {
+    padding: 40px 20px;
     font-size: 18px;
     font-family: "Verdana"
   }
   
-  /* .logo-img {
-    width: 350px;
-  } */
+   .logo-img {
+    width: 450px;
+  }
   
  
   
   body button {
-    font-size: 30px;
-    background-color: aqua;
-    color: black;
-    padding: 20px 40px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    padding: 20px 20px;
     border: 0;
     box-shadow: 0;
     border-radius: 5px;
@@ -39,6 +36,8 @@
   
   #game-board {
       float: left;
+     margin: auto;
       padding: 20px 0px;
+      
   }
   

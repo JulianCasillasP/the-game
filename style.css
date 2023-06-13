@@ -6,9 +6,9 @@
   .game-intro {
     float: left;
     padding: 0% 10%;
-    background-color: brown;
+    background-color: white;
     border: 5px solid black;
-      
+      display: block
   }
   
   .game-intro p {
@@ -21,9 +21,11 @@
     width: 450px;
   }
   
- 
+ canvas {
+  display :none;
+ }
   
-  body button {
+  #new-game-button {
     font-size: 20px;
     background-color: black;
     color: white;
@@ -41,3 +43,27 @@
       
   }
   
+
+  .game-over {
+    float: right;
+    padding: 0% 10%;
+    background-color:black;
+    border: 5px solid black;
+    display: none;
+      
+  }
+
+  .gameover-img {
+    width: 450px;
+  }
+
+  #try-again {
+    font-size: 20px;
+    background-color: white;
+    color: blue;
+    padding: 20px 20px;
+    border: 2px solid blue;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }

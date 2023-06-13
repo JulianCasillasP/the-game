@@ -85,13 +85,7 @@ window.onload = () => {
         contexto.closePath();
         contexto.fill();
   
-        map1.obstaculo.forEach(function(cuadrado) {
-          ctx.fillStyle = cuadrado.color;
-          ctx.fillRect(cuadrado.x, cuadrado.y, cuadrado.width, cuadrado.height);
-        });
-        
-        ctx.fillStyle = map1.meta.color;
-        ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
+      
         
       }
     
@@ -135,7 +129,7 @@ window.onload = () => {
       }
     }
     
-    
+
     class Game {
       constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
@@ -143,43 +137,84 @@ window.onload = () => {
         this.player = new Player();
         this.intervalId = undefined;
         this.player.draw(this.context);
-        
-  }
+        this.map = map1;
+        this.gameOverElement = document.querySelector(".game-over");
+
+         }
+
   start() {
     if (this.intervalId == undefined) {
       this.intervalId = setInterval(() => {
-        this.iteration++;
-        this.clear();
-        this.recalculate();
+
+        // this.clear();
+        // this.recalculate();
         this.print();
       }, 20);
     }
+    console.log("funciona")
   }
 
   clear () {
-
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   print() {
+    this.map.obstaculo.forEach(function(cuadrado) {
+      ctx.fillStyle = cuadrado.color;
+      ctx.fillRect(cuadrado.x, cuadrado.y, cuadrado.width, cuadrado.height);
+    });
+    
+    ctx.fillStyle = this.map.meta.color;
+    ctx.fillRect(this.map.meta.x, this.map.meta.y, this.map.meta.width, this.map.meta.height);
   }
 
   recalculate() {
 
-  }
-  }
+ // Obtener las coordenadas del jugador
+ const playerX = this.player.x;
+ const playerY = this.player.y;
+ const playerWidth = this.player.width;
+ const playerHeight = this.player.height;
 
-
+ // Verificar colisiones con obstáculos
+ this.map.obstaculo.forEach((obstaculo) => {
+   if (
+playerX < obstaculo.x + obstaculo.width &&
+playerX + playerWidth > obstaculo.x &&
+playerY < obstaculo.y + obstaculo.height &&
+playerY + playerHeight > obstaculo.y
+) {
+// Si hay colisión, restablecer la posición del jugador
+this.showGameOverScreen();
+}
+});
+  }
+  showGameOverScreen() {
+    clearInterval(this.intervalId); //detener el bucle principal del juego
+    this.gameOverElement.style.display = 'block'; //mostrar la pantalla de gameover
+  }
+    
+    }
     const game = new Game("gameCanvas");
     // Crear una instancia del juego
 
     document.getElementById("new-game-button").onclick = () => {
           startGame();
+          document.getElementsByClassName("game-intro")[0].style.display = "none"; 
+          canvas.style.display = 'block'
+
         };
       
         function startGame() {
           game.start();
         }
+
+     // cambiar ventana eliminando la anterior
     
+    //  document.getElementsByClassName("game-intro")[0].style.display = "none";
+      
+
+
     game.canvas.addEventListener("mousemove", (event) => {
       game.player.handleMouseMove(event, game.canvas, game.context);
      

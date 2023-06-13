@@ -78,7 +78,7 @@ window.onload = () => {
       }
       
     
-      draw(contexto) {
+      draw (contexto) {
         contexto.fillStyle = "red";
         contexto.beginPath();
         contexto.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
@@ -147,7 +147,7 @@ window.onload = () => {
       this.intervalId = setInterval(() => {
 
         // this.clear();
-        // this.recalculate();
+        this.recalculate();
         this.print();
       }, 20);
     }
@@ -194,7 +194,10 @@ this.showGameOverScreen();
     this.gameOverElement.style.display = 'block'; //mostrar la pantalla de gameover
   }
     
+
     }
+    
+
     const game = new Game("gameCanvas");
     // Crear una instancia del juego
 
@@ -209,9 +212,7 @@ this.showGameOverScreen();
           game.start();
         }
 
-     // cambiar ventana eliminando la anterior
     
-    //  document.getElementsByClassName("game-intro")[0].style.display = "none";
       
 
 

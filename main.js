@@ -38,7 +38,7 @@ obstaculo: [
 
 
 
-//-------------------------------------------
+
 // const map3 = {
 // obstaculo : [
 //   { x: 0, y: 0, width: 100, height:600, color: 'black'},
@@ -69,9 +69,9 @@ obstaculo: [
   class Player {
 
     constructor() {
-      this.radius = 10
-      this.width = 20;
-      this.height = 20;
+      
+      this.width = 6;
+      this.height = 6;
       this.x = 335;
       this.y = 470;
       this.isDragging = false;
@@ -80,10 +80,7 @@ obstaculo: [
   
     draw(contexto) {
       contexto.fillStyle = "red";
-      contexto.beginPath();
-      contexto.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-      contexto.closePath();
-      contexto.fill();
+      contexto.fillRect(this.x, this.y, this.width, this.height);
 
       map1.obstaculo.forEach(function(cuadrado) {
         ctx.fillStyle = cuadrado.color;
@@ -141,6 +138,7 @@ obstaculo: [
       this.context = this.canvas.getContext("2d");
       this.canvas.style.border = "2px solid black";
       this.player = new Player();
+      this.maps = new maps();
       this.intervalId = undefined;
       this.player.draw(this.context);
       this.map = map1;
@@ -149,7 +147,6 @@ obstaculo: [
 start() {
   if (this.intervalId == undefined) {
     this.intervalId = setInterval(() => {
-      this.iteration++;
       this.clear();
       this.recalculate();
       this.print();
@@ -158,6 +155,27 @@ start() {
 }
 print() {
 }
+}
+
+class maps {
+
+  draw(contexto) {
+    contexto.fillStyle = "red";
+    contexto.beginPath();
+    contexto.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    contexto.closePath();
+    contexto.fill();
+
+    map1.obstaculo.forEach(function(cuadrado) {
+      ctx.fillStyle = cuadrado.color;
+      ctx.fillRect(cuadrado.x, cuadrado.y, cuadrado.width, cuadrado.height);
+    });
+    
+    ctx.fillStyle = map1.meta.color;
+    ctx.fillRect(map1.meta.x, map1.meta.y, map1.meta.width, map1.meta.height);
+    
+  }
+
 }
   const game = new Game("gameCanvas");
   // Crear una instancia del juego

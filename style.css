@@ -45,7 +45,7 @@
   
 
   .game-over {
-    float: right;
+    float: left;
     padding: 0% 10%;
     background-color:black;
     border: 5px solid black;

@@ -4,7 +4,7 @@ window.onload = () => {
   const ctx = canvas.getContext('2d');
   
   // Definir los cuadrados y sus propiedades
-  const map1 = {
+  const maps = [{
   
   obstaculo: [
     { x: 0, y: 0, width: 250, height: 600, color: 'black' },
@@ -16,50 +16,50 @@ window.onload = () => {
     ],
   
     meta: { x:550, y: 70, width: 30, height:30, color:'red'},
-  }
+  }, {
+    obstaculo : [
+      { x: 0, y: 0, width: 700, height: 60, color: 'black'},
+      { x: 0, y: 0, width: 60, height: 600, color: 'black'},
+      { x: 0, y: 520, width: 700, height: 80, color: 'black'},
+      { x: 650, y:0, width: 60, height: 600, color: 'black'},
+      { x: 104, y:108, width: 596, height: 54, color:'black'},
+      { x: 0, y: 216, width: 596, height: 54, color:'black'},
+      { x: 104, y: 320, width: 596, height: 54, color:'black'},
+      { x: 0, y: 432, width: 596, height: 58, color:'black'},
+    
+    ],
+    
+    meta: { x: 60, y: 490, width: 30, height:30, color:'red'},
+     }, {
+      obstaculo : [
+        { x: 0, y: 0, width: 100, height:600, color: 'black'},
+        { x: 0, y: 0, width: 700, height: 60, color: 'black'},
+        { x: 600, y: 0, width: 100, height: 700, color: 'black'},
+        { x: 0, y: 500, width: 700, height: 100, color:'black'},
+        { x: 200, y:100, width: 100, height: 400, color: 'black'},
+        { x: 200, y:100, width: 350, height: 150, color: 'black'},
+        { x: 400, y:100, width: 150, height: 310, color: 'black'},
+        { x: 470, y:100, width: 80, height: 380, color: 'black'},
+        { x: 320, y:460, width: 150, height: 20, color: 'black'},
+        { x: 280, y:430, width: 170, height: 20, color: 'black'},
+        { x: 320, y:400, width: 180, height: 20, color: 'black'},
+        { x: 300, y:380, width: 90, height: 10, color: 'black'},
+        { x: 300, y:250, width: 90, height: 100, color: 'black'},
+        { x: 310, y:360, width: 100, height: 10, color: 'black'},
+      ],
+      
+      meta: { x: 390, y: 230, width: 10, height:20, color:'red' },
+      
+      }]
   
   
   //------------------------------------------
-  // const map2 ={
-  // obstaculo : [
-  //   { x: 0, y: 0, width: 700, height: 60, color: 'black'},
-  //   { x: 0, y: 0, width: 60, height: 600, color: 'black'},
-  //   { x: 0, y: 520, width: 700, height: 80, color: 'black'},
-  //   { x: 650, y:0, width: 60, height: 600, color: 'black'},
-  //   { x: 104, y:108, width: 596, height: 54, color:'black'},
-  //   { x: 0, y: 216, width: 596, height: 54, color:'black'},
-  //   { x: 104, y: 320, width: 596, height: 54, color:'black'},
-  //   { x: 0, y: 432, width: 596, height: 58, color:'black'},
-  
-  // ],
-  
-  // meta: { x: 60, y: 490, width: 30, height:30, color:'red'},
-  //  }
+  // const map2 =
   
   
   
   //-------------------------------------------
-  // const map3 = {
-  // obstaculo : [
-  //   { x: 0, y: 0, width: 100, height:600, color: 'black'},
-  //   { x: 0, y: 0, width: 700, height: 60, color: 'black'},
-  //   { x: 600, y: 0, width: 100, height: 700, color: 'black'},
-  //   { x: 0, y: 500, width: 700, height: 100, color:'black'},
-  //   { x: 200, y:100, width: 100, height: 400, color: 'black'},
-  //   { x: 200, y:100, width: 350, height: 150, color: 'black'},
-  //   { x: 400, y:100, width: 150, height: 310, color: 'black'},
-  //   { x: 470, y:100, width: 80, height: 380, color: 'black'},
-  //   { x: 320, y:460, width: 150, height: 20, color: 'black'},
-  //   { x: 280, y:430, width: 170, height: 20, color: 'black'},
-  //   { x: 320, y:400, width: 180, height: 20, color: 'black'},
-  //   { x: 300, y:380, width: 90, height: 10, color: 'black'},
-  //   { x: 300, y:250, width: 90, height: 100, color: 'black'},
-  //   { x: 310, y:360, width: 100, height: 10, color: 'black'},
-  // ],
-  
-  // meta: { x: 390, y: 230, width: 10, height:20, color:'red' },
-  
-  // }
+  const map3 = 
   
   
   // Dibujar los cuadrados en el canvas
@@ -89,10 +89,10 @@ window.onload = () => {
         
       }
     
-      clear(contexto, canvas) {
-        contexto.clearRect(0, 0, canvas.width, canvas.height);
+      // clear(contexto, canvas) {
+      //   contexto.clearRect(0, 0, canvas.width, canvas.height);
         
-      }
+      // }
     
       handleMouseMove(event, canvas, context) {
   
@@ -116,16 +116,16 @@ window.onload = () => {
           this.y = mouseY - this.height / 2;
         }
     
-        this.clear(context, canvas);
-        this.draw(context);
+        // this.clear(context, canvas);
+        // this.draw(context);
       }
     
       handleMouseOut(contexto) {
         this.isDragging = false;
         this.x = 335;
         this.y = 470;
-        this.clear(contexto);
-        this.draw(contexto);
+        // this.clear(contexto);
+        // this.draw(contexto);
       }
     }
     
@@ -137,7 +137,8 @@ window.onload = () => {
         this.player = new Player();
         this.intervalId = undefined;
         this.player.draw(this.context);
-        this.map = map1;
+        this.map = maps[0];
+        this.mapNumber = 0;
         this.gameOverElement = document.querySelector(".game-over");
 
          }
@@ -146,10 +147,10 @@ window.onload = () => {
     if (this.intervalId == undefined) {
       this.intervalId = setInterval(() => {
 
-        // this.clear();
-        // this.recalculate();
+        this.clear();
+        this.recalculate();
         this.print();
-      }, 20);
+      }, 5);
     }
     console.log("funciona")
   }
@@ -166,14 +167,17 @@ window.onload = () => {
     
     ctx.fillStyle = this.map.meta.color;
     ctx.fillRect(this.map.meta.x, this.map.meta.y, this.map.meta.width, this.map.meta.height);
+
+    this.player.draw(this.context);
   }
 
   recalculate() {
-  // Obtener las coordenadas del jugador
-  const playerX = this.player.x;
-  const playerY = this.player.y;
-  const playerWidth = this.player.width;
-  const playerHeight = this.player.height;
+
+ // Obtener las coordenadas del jugador
+ const playerX = this.player.x;
+ const playerY = this.player.y;
+ const playerWidth = this.player.width;
+ const playerHeight = this.player.height;
 
  // Verificar colisiones con obstáculos
  this.map.obstaculo.forEach((obstaculo) => {
@@ -185,39 +189,51 @@ playerY + playerHeight > obstaculo.y
 ) {
 // Si hay colisión, restablecer la posición del jugador
 this.showGameOverScreen();
+
+// COLISIÓN CON META
+
+
+this.mapNumber++
+this.map = maps[this.mapNumber];
+
+
+
+
 }
 });
   }
   showGameOverScreen() {
     clearInterval(this.intervalId); //detener el bucle principal del juego
     this.gameOverElement.style.display = 'block'; //mostrar la pantalla de gameover
+    canvas.style.display = 'none';
+
+
+
+
+
+
   }
+
+
+
+
     
+
+
     }
     const game = new Game("gameCanvas");
     // Crear una instancia del juego
 
-print() {
-  // Dibujar el mapa y el jugador en el canvas
-  this.map.obstaculo.forEach((cuadrado) => {
-    this.context.fillStyle = cuadrado.color;
-    this.context.fillRect(
-      cuadrado.x,
-      cuadrado.y,
-      cuadrado.width,
-      cuadrado.height
-    );
-  });
+    document.getElementById("new-game-button").onclick = () => {
+          startGame();
+          document.getElementsByClassName("game-intro")[0].style.display = "none"; 
+          canvas.style.display = 'block'
 
         };
       
         function startGame() {
           game.start();
         }
-
-     // cambiar ventana eliminando la anterior
-    
-    //  document.getElementsByClassName("game-intro")[0].style.display = "none";
       
 
 

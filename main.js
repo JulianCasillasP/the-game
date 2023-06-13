@@ -69,24 +69,17 @@ window.onload = () => {
     class Player {
   
       constructor() {
-        this.radius = 10
-        this.width = 20;
-        this.height = 20;
-        this.x = 335;
-        this.y = 470;
-        this.isDragging = false;
+        this.width = 8;
+      this.height = 8;
+      this.x = 335;
+      this.y = 470;
+      this.isDragging = false;
       }
       
     
       draw(contexto) {
         contexto.fillStyle = "red";
-        contexto.beginPath();
-        contexto.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        contexto.closePath();
-        contexto.fill();
-  
-      
-        
+        contexto.fillRect(this.x, this.y, this.width, this.height);  
       }
     
       // clear(contexto, canvas) {

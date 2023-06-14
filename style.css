@@ -44,27 +44,64 @@
   }
   
 
+
+  #win-page{
+    color: white;
+    margin: 0 auto;
+    display: none;
+    background-image: url('../images/champions.jpg');
+    width: 800px;
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    border-radius: 10px;
+    
+  }
+  
+  #win-page button {
+    font-size: 1em;
+    display: block;
+    margin: 50px auto;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: red;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+  }
+
   .game-over {
     float: left;
-    padding: 0% 10%;
-    background-color:black;
-    border: 5px solid black;
-    display: none;
-      
-  }
+  padding: 10% 10%;
+  background-color: black;
+  height: 350px;
+  width: 450px; /* Ancho igual al del canvas */
+   /* Altura igual a la del canvas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+  
 
   .gameover-img {
     width: 400px;
   }
 
+
+
   #try-again {
-    float: center;
     font-size: 20px;
-    background-color: white;
-    color: blue;
-    padding: 20px 20px;
-    border: 2px solid blue;
+    background-color:rgb(48, 149, 202);
+    color: black;
+    padding: 10px 10px;
+    border: 2px solid rgb(12, 91, 175);
     box-shadow: 0;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
+

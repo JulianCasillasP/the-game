@@ -52,42 +52,26 @@ window.onload = () => {
       
       }]
   
-  
-  //------------------------------------------
-  // const map2 =
-  
-  
-  
-  //-------------------------------------------
-  const map3 = 
-  
-  
-  // Dibujar los cuadrados en el canvas
+
   
   
   
     class Player {
   
       constructor() {
-        this.radius = 10
         this.width = 20;
-        this.height = 20;
-        this.x = 335;
-        this.y = 470;
-        this.isDragging = false;
+      this.height = 20;
+      this.x = 335;
+      this.y = 470;
+      this.isDragging = false;
       }
       
     
       draw(contexto) {
         contexto.fillStyle = "red";
-        contexto.beginPath();
-        contexto.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        contexto.closePath();
-        contexto.fill();
-  
-      
-        
+        contexto.fillRect(this.x, this.y, this.width, this.height);  
       }
+     
     
       // clear(contexto, canvas) {
       //   contexto.clearRect(0, 0, canvas.width, canvas.height);
@@ -189,38 +173,28 @@ playerY + playerHeight > obstaculo.y
 ) {
 // Si hay colisión, restablecer la posición del jugador
 this.showGameOverScreen();
-
-// COLISIÓN CON META
-
-
-this.mapNumber++
-this.map = maps[this.mapNumber];
-
-
-
-
 }
 });
   }
+
+  // COLISIÓN CON META
+
+
+
+
+// this.mapNumber++
+// this.map = maps[this.mapNumber];
+
+
   showGameOverScreen() {
     clearInterval(this.intervalId); //detener el bucle principal del juego
     this.gameOverElement.style.display = 'block'; //mostrar la pantalla de gameover
     canvas.style.display = 'none';
-
-
-
-
-
-
+   }
+   
   }
 
 
-
-
-    
-
-
-    }
     const game = new Game("gameCanvas");
     // Crear una instancia del juego
 

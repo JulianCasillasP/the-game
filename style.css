@@ -2,19 +2,13 @@
     padding: 0;
     text-align: center;
   }
-  
+    
   .game-intro {
     float: left;
     padding: 0% 10%;
-    background-color: white;
+    background-color: black;
     border: 5px solid black;
       display: block
-  }
-  
-  .game-intro p {
-    padding: 40px 20px;
-    font-size: 18px;
-    font-family: "Verdana"
   }
   
    .logo-img {
@@ -23,13 +17,15 @@
   
  canvas {
   display :none;
+  cursor: none;
  }
   
   #new-game-button {
     font-size: 20px;
-    background-color: black;
-    color: white;
+    background-color:rgb(48, 149, 202);
+    color: black;
     padding: 20px 20px;
+    border: 2px solid rgb(12, 91, 175);
     border: 0;
     box-shadow: 0;
     border-radius: 5px;
@@ -46,16 +42,17 @@
 
 
   #win-page{
-    color: white;
-    margin: 0 auto;
+    float: left;
+    padding: 10% 10%;
+    background-color: black;
+    height: 350px;
+    width: 450px; /* Ancho igual al del canvas */
+     /* Altura igual a la del canvas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     display: none;
-    background-image: url('../images/champions.jpg');
-    width: 800px;
-    height: 600px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    text-align: center;
-    border-radius: 10px;
     
   }
   
@@ -65,7 +62,7 @@
     margin: 50px auto;
     padding: 15px;
     border-radius: 10px;
-    background-color: red;
+    background-color: rgb(48, 149, 202);
     border: 1px solid white;
     color: white;
     cursor: pointer;

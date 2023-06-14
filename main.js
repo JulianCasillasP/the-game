@@ -37,16 +37,16 @@ window.onload = () => {
         { x: 0, y: 0, width: 700, height: 60, color: 'black' },
         { x: 600, y: 0, width: 100, height: 700, color: 'black' },
         { x: 0, y: 530, width: 700, height: 100, color: 'black' },
-        { x: 200, y: 100, width: 90, height: 430, color: 'cyan' },
-        { x: 200, y: 100, width: 350, height: 150, color: 'yellow' },
-        { x: 410, y: 100, width: 60, height: 310, color: 'blue' },
-        { x: 470, y: 100, width: 80, height: 400, color: 'orange' },
-        { x: 320, y: 480, width: 150, height: 20, color: 'purple' },
-        { x: 290, y: 440, width: 150, height: 10, color: 'brown' },
-        { x: 320, y: 410, width: 150, height: 5, color: 'green' },
-        { x: 290, y: 385, width: 90, height: 5, color: 'red' },
-        { x: 290, y: 250, width: 90, height: 90, color: 'green' },
-        { x: 315, y: 360, width: 95, height: 5, color: 'blue' },
+        { x: 200, y: 100, width: 90, height: 430, color: 'black' },
+        { x: 200, y: 100, width: 350, height: 150, color: 'black' },
+        { x: 410, y: 100, width: 60, height: 310, color: 'black' },
+        { x: 470, y: 100, width: 80, height: 400, color: 'black' },
+        { x: 320, y: 480, width: 150, height: 20, color: 'black' },
+        { x: 290, y: 440, width: 150, height: 10, color: 'black' },
+        { x: 320, y: 410, width: 150, height: 5, color: 'black' },
+        { x: 290, y: 385, width: 90, height: 5, color: 'black' },
+        { x: 290, y: 250, width: 90, height: 90, color: 'black' },
+        { x: 315, y: 360, width: 95, height: 5, color: 'black' },
         { x:0, y:0, width: 30, height: 600, color: 'black' },
       ],
       
@@ -66,7 +66,7 @@ window.onload = () => {
       
     
       draw(contexto) {
-        contexto.fillStyle = "red";
+        contexto.fillStyle = 'rgb(12, 91, 175)';
         contexto.fillRect(this.x, this.y, this.width, this.height);  
       }
      
@@ -82,24 +82,25 @@ window.onload = () => {
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
     
-        if (
-          mouseX >= this.x &&
-          mouseX <= this.x + this.width &&
-          mouseY >= this.y &&
-          mouseY <= this.y + this.height
-        ) {
-          this.isDragging = true;
-        } else {
-          this.isDragging = false;
+        this.x = mouseX - this.width / 2;
+        this.y = mouseY - this.height / 2;
+      
+        // Limitar la posición del rectángulo para que no se salga del canvas
+        if (this.x < 0) {
+          this.x = 0;
+        } else if (this.x + this.width > canvas.width) {
+          this.x = canvas.width - this.width;
         }
-    
-        if (this.isDragging) {
-          this.x = mouseX - this.width / 2;
-          this.y = mouseY - this.height / 2;
+      
+        if (this.y < 0) {
+          this.y = 0;
+        } else if (this.y + this.height > canvas.height) {
+          this.y = canvas.height - this.height;
         }
-    
-        // this.clear(context, canvas);
-        // this.draw(context);
+      
+        // Dibujar el rectángulo en su nueva posición
+        this.draw(context);
+        
       }
     
       handleMouseOut(contexto) {
@@ -188,7 +189,10 @@ window.onload = () => {
         this.map = maps[this.mapNumber];
         this.player.x = currentMeta.x; // Restablecer la posición del jugador a la posición de la meta anterior
         this.player.y = currentMeta.y;
-      } 
+      } else {
+          this.showWinScreen();
+            }
+      
     }
   }
 
@@ -198,7 +202,14 @@ window.onload = () => {
     canvas.style.display = 'none';
    }
 
- 
+   showWinScreen() {
+    clearInterval(this.intervalId); // Detener el bucle principal del juego
+    const winPage = document.getElementById("win-page");
+    winPage.style.display = "block"; // Mostrar la página de victoria
+    canvas.style.display = "none"; // Ocultar el canvas del juego
+  }
+
+
 }
 
 

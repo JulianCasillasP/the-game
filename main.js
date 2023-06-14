@@ -136,7 +136,6 @@ window.onload = () => {
         this.print();
       }, 5);
     }
-    console.log("funciona")
   }
 
   clear () {
@@ -154,6 +153,8 @@ window.onload = () => {
 
     this.player.draw(this.context);
   }
+
+  
 
   recalculate() {
 
@@ -175,13 +176,10 @@ playerY + playerHeight > obstaculo.y
 this.showGameOverScreen();
 }
 });
-  }
+  
 
-  // COLISIÓN CON META
-
-
-
-
+}
+// COLISIÓN CON META
 // this.mapNumber++
 // this.map = maps[this.mapNumber];
 
@@ -191,8 +189,9 @@ this.showGameOverScreen();
     this.gameOverElement.style.display = 'block'; //mostrar la pantalla de gameover
     canvas.style.display = 'none';
    }
-   
-  }
+
+ 
+}
 
 
     const game = new Game("gameCanvas");

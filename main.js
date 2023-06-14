@@ -15,7 +15,7 @@ window.onload = () => {
   
     ],
   
-    meta: { x:550, y: 70, width: 30, height:30, color:'red'},
+    meta: { x:520, y: 70, width: 30, height:30, color:'red'},
   }, {
     obstaculo : [
       { x: 0, y: 0, width: 700, height: 60, color: 'black'},
@@ -26,42 +26,39 @@ window.onload = () => {
       { x: 0, y: 216, width: 596, height: 54, color:'black'},
       { x: 104, y: 320, width: 596, height: 54, color:'black'},
       { x: 0, y: 432, width: 596, height: 58, color:'black'},
+      {x: 560, y: 60, width:120, height: 48, color: "black"},
     
     ],
     
     meta: { x: 60, y: 490, width: 30, height:30, color:'red'},
      }, {
       obstaculo : [
-        { x: 0, y: 0, width: 100, height:600, color: 'black'},
-        { x: 0, y: 0, width: 700, height: 60, color: 'black'},
-        { x: 600, y: 0, width: 100, height: 700, color: 'black'},
-        { x: 0, y: 500, width: 700, height: 100, color:'black'},
-        { x: 200, y:100, width: 100, height: 400, color: 'black'},
-        { x: 200, y:100, width: 350, height: 150, color: 'black'},
-        { x: 400, y:100, width: 150, height: 310, color: 'black'},
-        { x: 470, y:100, width: 80, height: 380, color: 'black'},
-        { x: 320, y:460, width: 150, height: 20, color: 'black'},
-        { x: 280, y:430, width: 170, height: 20, color: 'black'},
-        { x: 320, y:400, width: 180, height: 20, color: 'black'},
-        { x: 300, y:380, width: 90, height: 10, color: 'black'},
-        { x: 300, y:250, width: 90, height: 100, color: 'black'},
-        { x: 310, y:360, width: 100, height: 10, color: 'black'},
+        { x: 0, y: 0, width: 100, height: 450, color: 'black' },
+        { x: 0, y: 0, width: 700, height: 60, color: 'black' },
+        { x: 600, y: 0, width: 100, height: 700, color: 'black' },
+        { x: 0, y: 530, width: 700, height: 100, color: 'black' },
+        { x: 200, y: 100, width: 90, height: 430, color: 'cyan' },
+        { x: 200, y: 100, width: 350, height: 150, color: 'yellow' },
+        { x: 410, y: 100, width: 60, height: 310, color: 'blue' },
+        { x: 470, y: 100, width: 80, height: 400, color: 'orange' },
+        { x: 320, y: 480, width: 150, height: 20, color: 'purple' },
+        { x: 290, y: 440, width: 150, height: 10, color: 'brown' },
+        { x: 320, y: 410, width: 150, height: 5, color: 'green' },
+        { x: 290, y: 385, width: 90, height: 5, color: 'red' },
+        { x: 290, y: 250, width: 90, height: 90, color: 'green' },
+        { x: 315, y: 360, width: 95, height: 5, color: 'blue' },
+        { x:0, y:0, width: 30, height: 600, color: 'black' },
       ],
       
-      meta: { x: 390, y: 230, width: 10, height:20, color:'red' },
+      meta: { x: 380, y: 250, width: 30, height: 20, color: 'red' },
       
       }]
-  
-
-  
-  
   
     class Player {
   
       constructor() {
-        this.radius = 10
-        this.width = 20;
-        this.height = 20;
+        this.width = 13;
+        this.height = 13;
         this.x = 335;
         this.y = 470;
         this.isDragging = false;
@@ -158,32 +155,42 @@ window.onload = () => {
   
 
   recalculate() {
-
- // Obtener las coordenadas del jugador
- const playerX = this.player.x;
- const playerY = this.player.y;
- const playerWidth = this.player.width;
- const playerHeight = this.player.height;
-
- // Verificar colisiones con obstáculos
- this.map.obstaculo.forEach((obstaculo) => {
-   if (
-playerX < obstaculo.x + obstaculo.width &&
-playerX + playerWidth > obstaculo.x &&
-playerY < obstaculo.y + obstaculo.height &&
-playerY + playerHeight > obstaculo.y
-) {
-// Si hay colisión, restablecer la posición del jugador
-this.showGameOverScreen();
-}
-});
+    // Obtener las coordenadas del jugador
+    const playerX = this.player.x;
+    const playerY = this.player.y;
+    const playerWidth = this.player.width;
+    const playerHeight = this.player.height;
   
-
-}
-// COLISIÓN CON META
-// this.mapNumber++
-// this.map = maps[this.mapNumber];
-
+    // Verificar colisiones con obstáculos
+    this.map.obstaculo.forEach((obstaculo) => {
+      if (
+        playerX < obstaculo.x + obstaculo.width &&
+        playerX + playerWidth > obstaculo.x &&
+        playerY < obstaculo.y + obstaculo.height &&
+        playerY + playerHeight > obstaculo.y
+      ) {
+        // Si hay colisión, restablecer la posición del jugador
+        this.showGameOverScreen();
+      }
+    });
+  
+    // Verificar colisión con la meta
+    if (
+      playerX < this.map.meta.x + this.map.meta.width &&
+      playerX + playerWidth > this.map.meta.x &&
+      playerY < this.map.meta.y + this.map.meta.height &&
+      playerY + playerHeight > this.map.meta.y
+    ) {
+      // Si hay colisión con la meta, pasar al siguiente obstáculo
+      const currentMeta = this.map.meta;
+      this.mapNumber++;
+      if (this.mapNumber < maps.length) {
+        this.map = maps[this.mapNumber];
+        this.player.x = currentMeta.x; // Restablecer la posición del jugador a la posición de la meta anterior
+        this.player.y = currentMeta.y;
+      } 
+    }
+  }
 
   showGameOverScreen() {
     clearInterval(this.intervalId); //detener el bucle principal del juego

@@ -11,20 +11,26 @@ Somos Carlos y Julián, dos estudiantes del Bootcamp de Desarrollo Full Stack de
 Puedes jugar al juego [aquí](https://juliancasillasp.github.io/the-game/)
 
 
-## Sobre el juego
-Con el cursor deberas llegar a la meta sin salir del camino.
 
+## About Us
+We are Carlos and Julián, two students from Ironhack Barcelona's Full Stack Development Bootcamp, and this is our first project where we have combined CSS, HTML, and JavaScript to develop it.
 
-## Controles
+## Deployment
+You can play the game here.
+
+## About the Game
+Using the cursor, you must reach the goal without leaving the path.
+
+## Controls
 Cursor.
 
-## Condición de victoria
-Superar los tres mapas llegando a la meta.
+## Victory Condition
+Successfully completing all three levels and reaching the goal.
 
-## Condición de derrota
-Colisión entre cursor y borde.
+## Defeat Condition
+Collision between the cursor and the border.
 
-## Clases
+## Classes
 
 |   Class   | Properties                                        | Methods                                                                            |
 | :-------: | ------------------------------------------------- | ---------------------------------------------------------------------------------- |

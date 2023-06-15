@@ -3,9 +3,6 @@
     text-align: center;
   }
   
-  canvas {
-    cursor: none;
-  }
   
   .game-intro {
     float: left;
@@ -27,6 +24,7 @@
   
  canvas {
   display :none;
+  cursor: none;
  }
   
   #new-game-button {

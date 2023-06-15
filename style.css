@@ -1,0 +1,101 @@
+  body {
+    padding: 0;
+    text-align: center;
+    
+  }
+    
+  canvas {
+    display :none;
+    cursor: none;
+    
+   }
+
+  .game-intro {
+    float: left;
+    background-color: black;
+    border: 5px solid black;
+      display: block;
+      height: 600px;
+      width: 700px; 
+  }
+  
+   .logo-img {
+    width: 450px;
+  }
+  
+  
+  #new-game-button {
+    font-size: 16px;
+    background-color:rgb(48, 149, 202);
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid white;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  #game-board {
+    float: left;
+    margin: auto;
+    padding: 20px 0px;
+  }
+  
+ .game-over {
+   float: left;
+    padding: 8% 8%;
+    background-color: black;
+    border: 5px solid black;
+    height: 350px;
+    width: 450px; 
+    display: none;
+  }
+  
+
+  .gameover-img {
+    width: 400px;
+     }
+
+
+
+  #try-again {
+    font-size: 15px;
+    background-color:rgb(48, 149, 202);
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid white;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  #win-page {
+ 
+   float: left;
+   background-color: black;
+   border: 5px solid black;
+   display: block;
+   height: 600px;
+   width: 700px; 
+   display: none;
+  }
+  
+  
+
+  .win-img {
+    width: 500px;
+    }
+
+
+
+  #play-again {
+    font-size: 16px;
+    background-color:rgb(48, 149, 202);
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid white;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }

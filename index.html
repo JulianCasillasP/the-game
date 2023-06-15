@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Iron Maze</title>
+</head>
+
+<body>
+    <div class="game-intro">
+        <img src="./images/logo.png" alt="" class="logo-img" />
+        
+        <br/>
+        <button id="new-game-button">New Game</button>
+      </div>
+  
+<div id="game-board">
+      <canvas id="gameCanvas" width="850" height="600"></canvas>
+
+</div>
+
+<div id="win-page">
+  <img src="./images/youwin.jpeg" alt="" class="win-img" />
+  <br/>
+  <br/>
+    <button id="play-again" onClick="window.location.reload()">Play Again</button>
+  </div>
+
+  
+<div class="game-over">
+    <img src="./images/gameover.png" alt="" class="gameover-img"/>
+    <br/>
+    <br/>
+      
+    <button id="try-again" onClick="window.location.reload()">Try Again</button>
+  </div>
+
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>

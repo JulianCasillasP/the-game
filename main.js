@@ -201,12 +201,10 @@ window.onload = () => {
     canvas.style.display = "none"; 
   }
 
-
 }
 
 
     const game = new Game("gameCanvas");
-    // Crear una instancia del juego
 
     document.getElementById("new-game-button").onclick = () => {
           startGame();

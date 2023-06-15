@@ -1,8 +1,6 @@
 
 ![logo-ironmaze](./images/logo.png)
 
-# Iron Maze
-
 
 
 ## Sobre nosotros
@@ -21,17 +19,14 @@ Con el cursor deberas llegar a la meta sin salir del camino.
 Cursor.
 
 ## Condición de victoria
-Llegar hasta la meta.
+Superar los tres mapas llegando a la meta.
 
 ## Condición de derrota
 Colisión entre cursor y borde.
 
 ## Clases
 
-|   Class   | Properties                                                            | Methods                                          |
-| :-------: | --------------------------------------------------------------------- | ------------------------------------------------ |
-|   Player  |                                                                       |                                                  |
-| Obstaculo |                                                                       |                                                  |
-|   Juego   |                                                                       |                                                  |
-|   Meta    |                                                                       |                                                  |
-|           |                                                                       |                                                  | 
+|   Class   | Properties                                        | Methods                                                                            |
+| :-------: | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+|   Player  |    x, y, w, h                                     | draw(contexto), handleMouseMove(event, canvas, context), handleMouseOut(contexto)  |
+|   Game    |   canvas, ctx, player, map, intervalId, iteracion | start(), clear (), print(), recalculate(), showGameOverScreen(), showWinScreen()   |                                    

@@ -1,104 +1,101 @@
   body {
     padding: 0;
     text-align: center;
+    
   }
     
+  canvas {
+    display :none;
+    cursor: none;
+    
+   }
+
   .game-intro {
     float: left;
-    padding: 0% 10%;
     background-color: black;
     border: 5px solid black;
-      display: block
+      display: block;
+      height: 600px;
+      width: 700px; 
   }
   
    .logo-img {
     width: 450px;
   }
   
- canvas {
-  display :none;
-  cursor: none;
- }
   
   #new-game-button {
-    font-size: 20px;
+    font-size: 16px;
     background-color:rgb(48, 149, 202);
     color: black;
-    padding: 20px 20px;
-    border: 2px solid rgb(12, 91, 175);
-    border: 0;
+    padding: 10px 20px;
+    border: 1px solid white;
     box-shadow: 0;
     border-radius: 5px;
     margin-bottom: 20px;
   }
   
   #game-board {
-      float: left;
-     margin: auto;
-      padding: 20px 0px;
-      
+    float: left;
+    margin: auto;
+    padding: 20px 0px;
   }
   
-
-
-  #win-page{
-    float: left;
-    padding: 10% 10%;
+ .game-over {
+   float: left;
+    padding: 8% 8%;
     background-color: black;
+    border: 5px solid black;
     height: 350px;
-    width: 450px; /* Ancho igual al del canvas */
-     /* Altura igual a la del canvas */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 450px; 
     display: none;
-    
   }
-  
-  #win-page button {
-    font-size: 1em;
-    display: block;
-    margin: 50px auto;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: rgb(48, 149, 202);
-    border: 1px solid white;
-    color: white;
-    cursor: pointer;
-  }
-
-  .game-over {
-    float: left;
-  padding: 10% 10%;
-  background-color: black;
-  height: 350px;
-  width: 450px; /* Ancho igual al del canvas */
-   /* Altura igual a la del canvas */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
-
   
 
   .gameover-img {
     width: 400px;
-  }
+     }
 
 
 
   #try-again {
-    font-size: 20px;
+    font-size: 15px;
     background-color:rgb(48, 149, 202);
     color: black;
-    padding: 10px 10px;
-    border: 2px solid rgb(12, 91, 175);
+    padding: 10px 20px;
+    border: 1px solid white;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  #win-page {
+ 
+   float: left;
+   background-color: black;
+   border: 5px solid black;
+   display: block;
+   height: 600px;
+   width: 700px; 
+   display: none;
+  }
+  
+  
+
+  .win-img {
+    width: 500px;
+    }
+
+
+
+  #play-again {
+    font-size: 16px;
+    background-color:rgb(48, 149, 202);
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid white;
     box-shadow: 0;
     border-radius: 5px;
     margin-bottom: 20px;
-    margin-top: 20px;
   }
-

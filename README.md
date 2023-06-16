@@ -21,7 +21,7 @@ Collision between the cursor and the border.
 
 ## Classes
 
-|   Class   | Properties                                        | Methods                                                                            |
-| :-------: | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
-|   Player  |    x, y, w, h                                     | draw(contexto), handleMouseMove(event, canvas, context), handleMouseOut(contexto)  |
-|   Game    |   canvas, ctx, player, map, intervalId,           | start(), clear (), print(), recalculate(), showGameOverScreen(), showWinScreen()   |                                    
+|   Class   | Properties                              | Methods                                                                            |
+| :-------: | --------------------------------------- | ---------------------------------------------------------------------------------- |
+|   Player  |    x, y, w, h                           | draw(contexto), handleMouseMove(event, canvas, context), handleMouseOut(contexto)  |
+|   Game    |   canvas, ctx, player, map, intervalId  | start(), clear (), print(), recalculate(), showGameOverScreen(), showWinScreen()   |                                    

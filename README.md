@@ -11,13 +11,13 @@ You can play the game [here](https://juliancasillasp.github.io/the-game/)
 Using the cursor, you must reach the goal without leaving the path.
 
 ## Controls
-Cursor.
+Mouse
 
 ## Victory Condition
 Successfully completing all three levels and reaching the goal.
 
 ## Defeat Condition
-Collision between the cursor and the border.
+Collision between the player and the border.
 
 ## Classes
 
